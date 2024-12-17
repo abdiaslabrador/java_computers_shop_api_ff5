@@ -12,47 +12,48 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Users")
-public class User {
+@Table(name = "Clients")
+public class Client {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column(name = "first_name")
     String firstName;
     @Column(name = "last_name")
     String lastName;
+    @Column()
     String dni;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Shop> shops;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Bill> bills;
 
-    public User( String firstName, String lastName, String dni) {
+    public Client( String firstName, String lastName, String dni) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
     }
 
-    public User(int id, String firstName, String lastName, String dni) {
+    public Client(int id, String firstName, String lastName, String dni) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
     }
 
-    public User(int id, String firstName, String lastName, String dni, List<Shop> shops) {
+    public Client(int id, String firstName, String lastName, String dni, List<Bill> bills) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
-        this.shops = shops;
+        this.bills = bills;
     }
 
-    public User( String firstName, String lastName, String dni, List<Shop> shops) {
+    public Client( String firstName, String lastName, String dni, List<Bill> bills) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
-        this.shops = shops;
+        this.bills = bills;
     }
     
     public int getId() {
@@ -84,11 +85,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public List<Shop> getShops() {
-        return shops;
+    public List<Bill> getBills() {
+        return bills;
     }
 
-    public void setShops(List<Shop> shops) {
-        this.shops = shops;
+    public void setBills(List<Bill> bills) {
+        this.bills = bills; 
     }
 }

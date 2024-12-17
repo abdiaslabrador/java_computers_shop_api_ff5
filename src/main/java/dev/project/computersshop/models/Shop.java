@@ -2,6 +2,7 @@ package dev.project.computersshop.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,20 +19,16 @@ import jakarta.persistence.Table;
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    int id;
+    private int id;
     @Column()
-    String name;
+    private String name;
     @Column(name = "tax_id")
-    String taxId;
+    private String taxId;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Bill> bills;
 
-    @ManyToMany(mappedBy = "shops")
-    public List<Product> products;
-
-    public Shop( String name, String taxId) {
+    public Shop(String name, String taxId) {
         this.name = name;
         this.taxId = taxId;
     }
@@ -41,19 +39,18 @@ public class Shop {
         this.taxId = taxId;
     }
 
-    public Shop(int id, String name, String taxId, User user, List<Product> products) {
+    public Shop(int id, String name, String taxId, List<Bill> bills) {
         this.id = id;
         this.name = name;
         this.taxId = taxId;
-        this.user = user;
-        this.products = products;
+        this.bills = bills;
     }
 
-    public Shop( String name, String taxId, User user, List<Product> products) {
+    public Shop( String name, String taxId, List<Bill> bills) {
         this.name = name;
         this.taxId = taxId;
-        this.user = user;
-        this.products = products;
+        this.bills = bills;
+
     }
 
     public int getId() {
@@ -75,19 +72,11 @@ public class Shop {
         this.taxId = taxId;
     }
 
-    public User getUser() {
-        return user;
+    public List<Bill> getBills() {
+        return this.bills;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setBills(List<Bill> bills) {
+        this.bills = bills;
     }
 }

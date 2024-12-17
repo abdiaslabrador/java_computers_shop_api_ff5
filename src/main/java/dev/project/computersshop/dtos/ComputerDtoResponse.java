@@ -12,6 +12,7 @@ public class ComputerDtoResponse {
     private ProductDto product;
 
     public ComputerDtoResponse(Computer computer){
+        this.id = computer.getId();
         this.brand = computer.getBrand();
         this.memory = computer.getMemory();
         this.cpu = computer.getCpu();

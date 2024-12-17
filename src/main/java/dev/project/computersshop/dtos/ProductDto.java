@@ -4,13 +4,9 @@ import dev.project.computersshop.models.Product;
 
 public class ProductDto {
    private  int id;
-
    private  String name;
-
    private  String code;
-
    private int quantity; 
-
    private double price;
 
     public ProductDto(Product product) {

@@ -2,6 +2,7 @@ package dev.project.computersshop.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -28,13 +30,8 @@ public class Product {
     @Column()
     double price;
 
-    @ManyToMany
-    @JoinTable( 
-        name = "PRODUCTS_SHOPS",
-        joinColumns  = @JoinColumn(name = "shop_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Shop> shops;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<BillDet> bill_dets;
 
     @OneToOne(mappedBy = "product")
     private Computer computer;
@@ -57,21 +54,21 @@ public class Product {
         this.price = price;
     }
 
-    public Product(int id, String name, String code, int quantity, double price, List <Shop> shops) {
+    public Product(int id, String name, String code, int quantity, double price, List<BillDet> bill_dets) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.quantity = quantity;
         this.price = price;
-        this.shops = shops;
+        this.bill_dets = bill_dets;
     }
 
-    public Product(String name, String code, int quantity, double price, List <Shop> shops) {
+    public Product(String name, String code, int quantity, double price, List<BillDet> bill_dets) {
         this.name = name;
         this.code = code;
         this.quantity = quantity;
         this.price = price;
-        this.shops = shops;
+        this.bill_dets = bill_dets;
     }
 
     public int getId() {
@@ -113,11 +110,11 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-    public List<Shop> getShops() {
-        return shops;
+    public List<BillDet> getBill_dets() {
+        return bill_dets;
     }
 
-    public void setShops(List<Shop> shops) {
-        this.shops = shops;
+    public void setBill_dets(List<BillDet> bill_dets) {
+        this.bill_dets = bill_dets;
     }
 }
