@@ -4,11 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.BeforeEach;
-
-import dev.project.computersshop.models.Product;
 
 public class ComputerTest {
 

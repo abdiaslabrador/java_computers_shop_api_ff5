@@ -1,7 +1,5 @@
 package dev.project.computersshop.models;
 
-import java.security.Principal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
