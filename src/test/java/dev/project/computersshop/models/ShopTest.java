@@ -26,13 +26,13 @@ public class ShopTest {
     }
 
     @Test
-    void testGetTax_id() {
+    void testGetTaxId() {
         // Arrange
         Shop shop = new Shop("My Shop", "12345678");
 
         // Act and Assert
-        assertNotNull(shop.getTax_id());
-        assertEquals("12345678", shop.getTax_id());
+        assertNotNull(shop.getTaxId());
+        assertEquals("12345678", shop.getTaxId());
     }
 
     @Test
@@ -60,14 +60,14 @@ public class ShopTest {
     }
 
     @Test
-    void testSetTax_id() {
+    void testSetTaxId() {
         // Arrange
         Shop shop = new Shop("My Shop", "12345678");
 
         // Act
-        shop.setTax_id("98765432");
+        shop.setTaxId("98765432");
 
         // Assert
-        assertEquals("98765432", shop.getTax_id());
+        assertEquals("98765432", shop.getTaxId());
     }
 }

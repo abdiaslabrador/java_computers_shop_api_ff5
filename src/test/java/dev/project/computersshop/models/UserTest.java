@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserTest {
 
     @Test
@@ -17,13 +20,13 @@ public class UserTest {
     }
 
     @Test
-    void testGetFirst_name() {
+    void testGetfirstName() {
         // Arrange
         User user = new User("John", "Doe", "12345678");
 
         // Act and Assert
-        assertNotNull(user.getFirst_name());
-        assertEquals("John", user.getFirst_name());
+        assertNotNull(user.getFirstName());
+        assertEquals("John", user.getFirstName());
     }
 
     @Test
@@ -36,13 +39,13 @@ public class UserTest {
     }
 
     @Test
-    void testGetLast_name() {
+    void testGetlastName() {
         // Arrange
         User user = new User("John", "Doe", "12345678");
 
         // Act and Assert
-        assertNotNull(user.getLast_name());
-        assertEquals("Doe", user.getLast_name());
+        assertNotNull(user.getLastName());
+        assertEquals("Doe", user.getLastName());
     }
 
     @Test
@@ -58,15 +61,15 @@ public class UserTest {
     }
 
     @Test
-    void testSetFirst_name() {
+    void testSetfirstName() {
         // Arrange
         User user = new User("John", "Doe", "12345678");
 
         // Act
-        user.setFirst_name("Jane");
+        user.setFirstName("Jane");
 
         // Assert
-        assertEquals("Jane", user.getFirst_name());
+        assertEquals("Jane", user.getFirstName());
     }
 
     @Test
@@ -82,14 +85,68 @@ public class UserTest {
     }
 
     @Test
-    void testSetLast_name() {
+    void testSetlastName() {
         // Arrange
         User user = new User("John", "Doe", "12345678");
 
         // Act
-        user.setLast_name("Smith");
+        user.setLastName("Smith");
 
         // Assert
-        assertEquals("Smith", user.getLast_name());
+        assertEquals("Smith", user.getLastName());
+    }
+
+    @Test
+    void testGetShops() {
+        // Arrange
+        List<Shop> shops = new ArrayList<>();
+        shops.add(new Shop("Shop1", "12345678"));
+        shops.add(new Shop("Shop2", "98765432"));
+        User user = new User("John", "Doe", "12345678", shops);
+
+        // Act and Assert
+        assertNotNull(user.getShops());
+        assertEquals(2, user.getShops().size());
+        assertEquals("Shop1", user.getShops().get(0).getName());
+        assertEquals("Shop2", user.getShops().get(1).getName());
+    }
+
+    @Test
+    void testSetShops() {
+        // Arrange
+        User user = new User("John", "Doe", "12345678");
+        List<Shop> shops = new ArrayList<>();
+        shops.add(new Shop("Shop1", "12345678"));
+        shops.add(new Shop("Shop2", "98765432"));
+
+        // Act
+        user.setShops(shops);
+
+        // Assert
+        assertNotNull(user.getShops());
+        assertEquals(2, user.getShops().size());
+        assertEquals("Shop1", user.getShops().get(0).getName());
+        assertEquals("Shop2", user.getShops().get(1).getName());
+    }
+
+    @Test
+    void testConstructorWithShops() {
+        // Arrange
+        List<Shop> shops = new ArrayList<>();
+        shops.add(new Shop("Shop1", "12345678"));
+        shops.add(new Shop("Shop2", "98765432"));
+
+        // Act
+        User user = new User(1, "John", "Doe", "12345678", shops);
+
+        // Assert
+        assertEquals(1, user.getId());
+        assertEquals("John", user.getFirstName());
+        assertEquals("Doe", user.getLastName());
+        assertEquals("12345678", user.getDni());
+        assertNotNull(user.getShops());
+        assertEquals(2, user.getShops().size());
+        assertEquals("Shop1", user.getShops().get(0).getName());
+        assertEquals("Shop2", user.getShops().get(1).getName());
     }
 }

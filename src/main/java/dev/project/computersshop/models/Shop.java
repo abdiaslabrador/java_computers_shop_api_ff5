@@ -1,22 +1,53 @@
 package dev.project.computersshop.models;
 
-public class Shop {
-    int id;
-    String name;
-    String tax_id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-    public Shop( String name, String tax_id) {
+@Entity
+@Table(name = "Shops")
+public class Shop {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    int id;
+    @Column()
+    String name;
+    @Column(name = "tax_id")
+    String taxId;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Shop( String name, String taxId) {
         this.name = name;
-        this.tax_id = tax_id;
+        this.taxId = taxId;
     }
 
-    public Shop(int id, String name, String tax_id) {
+    public Shop(int id, String name, String taxId) {
         this.id = id;
         this.name = name;
-        this.tax_id = tax_id;
+        this.taxId = taxId;
     }
 
-    
+    public Shop(int id, String name, String taxId, User user) {
+        this.id = id;
+        this.name = name;
+        this.taxId = taxId;
+        this.user = user;
+    }
+
+    public Shop( String name, String taxId, User user) {
+        this.name = name;
+        this.taxId = taxId;
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }
@@ -29,11 +60,18 @@ public class Shop {
     public void setName(String name) {
         this.name = name;
     }
-    public String getTax_id() {
-        return tax_id;
+    public String getTaxId() {
+        return taxId;
     }
-    public void setTax_id(String tax_id) {
-        this.tax_id = tax_id;
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
