@@ -4,13 +4,31 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import dev.project.computersshop.models.Product;
+
 public class ComputerTest {
+
+    Computer computer;
+    Computer computerId;
+    Product product;
+
+    @BeforeEach
+    void setUp() {
+        // Arrange
+        computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
+        product = new Product("Laptop", "LP001", 10, 1000.0);
+        computerId = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
+    }
+
 
     @Test
     void testGetBrand() {
         // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
+        // computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
         // Act and Assert
         assertNotNull(computer.getBrand());
         assertEquals("Dell", computer.getBrand());
@@ -18,9 +36,6 @@ public class ComputerTest {
 
     @Test
     void testGetCpu() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act and Assert
         assertNotNull(computer.getCpu());
         assertEquals("Intel Core i7", computer.getCpu());
@@ -28,18 +43,12 @@ public class ComputerTest {
 
     @Test
     void testGetId() {
-        // Arrange
-        Computer computer = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act and Assert
-        assertEquals(1, computer.getId());
+        assertEquals(1, computerId.getId());
     }
 
     @Test
     void testGetMemory() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act and Assert
         assertNotNull(computer.getMemory());
         assertEquals("16GB", computer.getMemory());
@@ -47,31 +56,35 @@ public class ComputerTest {
 
     @Test
     void testGetOperatingSystem() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act and Assert
         assertNotNull(computer.getOperatingSystem());
         assertEquals("Windows 10", computer.getOperatingSystem());
     }
 
     @Test
+    void testGetProduct() {
+        // Arrange
+        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10", product);
+
+        // Act and Assert
+        assertNotNull(computer.getProduct());
+        assertEquals("Laptop", computer.getProduct().getName());
+    }
+
+    @Test
     void testSetBrand() {
         // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
+        Computer computerIdPro = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
 
         // Act
-        computer.setBrand("HP");
+        computerIdPro.setBrand("HP");
 
         // Assert
-        assertEquals("HP", computer.getBrand());
+        assertEquals("HP", computerIdPro.getBrand());
     }
 
     @Test
     void testSetCpu() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act
         computer.setCpu("AMD Ryzen 9");
 
@@ -81,9 +94,6 @@ public class ComputerTest {
 
     @Test
     void testSetId() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-
         // Act
         computer.setId(1);
 
@@ -94,7 +104,6 @@ public class ComputerTest {
     @Test
     void testSetMemory() {
         // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
 
         // Act
         computer.setMemory("32GB");
@@ -106,12 +115,23 @@ public class ComputerTest {
     @Test
     void testSetOperatingSystem() {
         // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
 
         // Act
         computer.setOperatingSystem("Linux");
 
         // Assert
         assertEquals("Linux", computer.getOperatingSystem());
+    }
+
+    @Test
+    void testSetProduct() {
+        // Arrange
+
+        // Act
+        computer.setProduct(product);
+
+        // Assert
+        assertNotNull(computer.getProduct());
+        assertEquals("Laptop", computer.getProduct().getName());
     }
 }

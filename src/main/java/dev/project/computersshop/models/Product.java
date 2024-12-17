@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,8 +24,6 @@ public class Product {
     int id;
     @Column()
     String name;
-    
-
     @Column()
     String code;
     @Column()
@@ -39,6 +38,9 @@ public class Product {
         inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Shop> shops;
+
+    @OneToOne(mappedBy = "product")
+    private Computer computer;
     
 
     public Product(String name, String code, int quantity, double price) {
@@ -56,7 +58,16 @@ public class Product {
         this.price = price;
     }
 
-    public Product( String name, String code, int quantity, double price, List <Shop> shops) {
+    public Product(int id, String name, String code, int quantity, double price, List <Shop> shops) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.quantity = quantity;
+        this.price = price;
+        this.shops = shops;
+    }
+
+    public Product(String name, String code, int quantity, double price, List <Shop> shops) {
         this.name = name;
         this.code = code;
         this.quantity = quantity;

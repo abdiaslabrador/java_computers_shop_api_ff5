@@ -1,34 +1,25 @@
 package dev.project.computersshop.models;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductTest {
 
-    @Test
-    void testGetId() {
+    Product product;
+
+    @BeforeEach
+    void setUp() {
         // Arrange
-        Product product = new Product(1, "Laptop", "LP001", 10, 1000.0);
-
-        // Act and Assert
-        assertEquals(1, product.getId());
-    }
-
-    @Test
-    void testGetName() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
-        // Act and Assert
-        assertNotNull(product.getName());
-        assertEquals("Laptop", product.getName());
+        product = new Product("Laptop", "LP001", 10, 1000.0);
     }
 
     @Test
     void testGetCode() {
         // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
 
         // Act and Assert
         assertNotNull(product.getCode());
@@ -36,28 +27,59 @@ public class ProductTest {
     }
 
     @Test
-    void testGetQuantity() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
+    void testGetId() {
+        //Arrange
+        Product productId = new Product(1, "Laptop", "LP001", 10, 1000.0);
 
+        // Act and Assert
+        assertEquals(1, productId.getId());
+    }
+
+    @Test
+    void testGetName() {
+        // Act and Assert
+        assertNotNull(product.getName());
+        assertEquals("Laptop", product.getName());
+    }
+
+    @Test
+    void testGetPrice() {
+        // Act and Assert
+        assertEquals(1000.0, product.getPrice(), 0.01); // Usar delta para comparar doubles
+    }
+
+    @Test
+    void testGetQuantity() {
         // Act and Assert
         assertEquals(10, product.getQuantity());
     }
 
     @Test
-    void testGetPrice() {
+    void testGetShops() {
         // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
+        List<Shop> shops = new ArrayList<>();
+        shops.add(new Shop("Shop1", "12345678"));
+        shops.add(new Shop("Shop2", "98765432"));
+        Product product = new Product(1, "Laptop", "LP001", 10, 1000.0, shops);
 
         // Act and Assert
-        assertEquals(1000.0, product.getPrice(), 0.01); 
+        assertNotNull(product.getShops());
+        assertEquals(2, product.getShops().size());
+        assertEquals("Shop1", product.getShops().get(0).getName());
+        assertEquals("Shop2", product.getShops().get(1).getName());
+    }
+
+    @Test
+    void testSetCode() {
+        // Act
+        product.setCode("LP002");
+
+        // Assert
+        assertEquals("LP002", product.getCode());
     }
 
     @Test
     void testSetId() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
         // Act
         product.setId(1);
 
@@ -67,9 +89,6 @@ public class ProductTest {
 
     @Test
     void testSetName() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
         // Act
         product.setName("Desktop");
 
@@ -78,38 +97,40 @@ public class ProductTest {
     }
 
     @Test
-    void testSetCode() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
-        // Act
-        product.setCode("LP002");
-
-        // Assert
-        assertEquals("LP002", product.getCode());
-    }
-
-    @Test
-    void testSetQuantity() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
-        // Act
-        product.setQuantity(20);
-
-        // Assert
-        assertEquals(20, product.getQuantity());
-    }
-
-    @Test
     void testSetPrice() {
-        // Arrange
-        Product product = new Product("Laptop", "LP001", 10, 1000.0);
-
         // Act
         product.setPrice(1200.0);
 
         // Assert
-        assertEquals(1200.0, product.getPrice(), 0.01); 
+        assertEquals(1200.0, product.getPrice(), 0.01); // Usar delta para comparar doubles
+    }
+
+    @Test
+    void testSetQuantity() {
+        Product productId = new Product(1, "Laptop", "LP001", 10, 1000.0);
+
+        // Act
+        productId.setQuantity(20);
+
+        // Assert
+        assertEquals(20, productId.getQuantity());
+    }
+
+    @Test
+    void testSetShops() {
+        // Arrange
+        Product product = new Product("Laptop", "LP001", 10, 1000.0);
+        List<Shop> shops = new ArrayList<>();
+        shops.add(new Shop("Shop1", "12345678"));
+        shops.add(new Shop("Shop2", "98765432"));
+
+        // Act
+        product.setShops(shops);
+
+        // Assert
+        assertNotNull(product.getShops());
+        assertEquals(2, product.getShops().size());
+        assertEquals("Shop1", product.getShops().get(0).getName());
+        assertEquals("Shop2", product.getShops().get(1).getName());
     }
 }
