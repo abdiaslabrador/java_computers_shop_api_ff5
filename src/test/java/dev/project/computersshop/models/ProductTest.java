@@ -45,7 +45,7 @@ public class ProductTest {
     @Test
     void testGetPrice() {
         // Act and Assert
-        assertEquals(1000.0, product.getPrice(), 0.01); // Usar delta para comparar doubles
+        assertEquals(1000.0, product.getPrice(), 0.01);
     }
 
     @Test
