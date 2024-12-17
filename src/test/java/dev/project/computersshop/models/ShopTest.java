@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopTest {
 
     @Test
@@ -69,5 +72,116 @@ public class ShopTest {
 
         // Assert
         assertEquals("98765432", shop.getTaxId());
+    }
+
+    @Test
+    void testGetUser() {
+        // Arrange
+        User user = new User("John", "Doe", "12345678");
+        Shop shop = new Shop("My Shop", "12345678", user, new ArrayList<>());
+
+        // Act and Assert
+        assertNotNull(shop.getUser());
+        assertEquals("John", shop.getUser().getFirstName());
+        assertEquals("Doe", shop.getUser().getLastName());
+        assertEquals("12345678", shop.getUser().getDni());
+    }
+
+    @Test
+    void testSetUser() {
+        // Arrange
+        Shop shop = new Shop("My Shop", "12345678");
+        User user = new User("John", "Doe", "12345678");
+
+        // Act
+        shop.setUser(user);
+
+        // Assert
+        assertNotNull(shop.getUser());
+        assertEquals("John", shop.getUser().getFirstName());
+        assertEquals("Doe", shop.getUser().getLastName());
+        assertEquals("12345678", shop.getUser().getDni());
+    }
+
+    @Test
+    void testGetProducts() {
+        // Arrange
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", "LP001", 10, 1000.0));
+        products.add(new Product("Desktop", "DP001", 5, 800.0));
+        Shop shop = new Shop("My Shop", "12345678", new User("John", "Doe", "12345678"), products);
+
+        // Act and Assert
+        assertNotNull(shop.getProducts());
+        assertEquals(2, shop.getProducts().size());
+        assertEquals("Laptop", shop.getProducts().get(0).getName());
+        assertEquals("Desktop", shop.getProducts().get(1).getName());
+    }
+
+    @Test
+    void testSetProducts() {
+        // Arrange
+        Shop shop = new Shop("My Shop", "12345678");
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", "LP001", 10, 1000.0));
+        products.add(new Product("Desktop", "DP001", 5, 800.0));
+
+        // Act
+        shop.setProducts(products);
+
+        // Assert
+        assertNotNull(shop.getProducts());
+        assertEquals(2, shop.getProducts().size());
+        assertEquals("Laptop", shop.getProducts().get(0).getName());
+        assertEquals("Desktop", shop.getProducts().get(1).getName());
+    }
+
+    @Test
+    void testConstructorWithUserAndProducts() {
+        // Arrange
+        User user = new User("John", "Doe", "12345678");
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", "LP001", 10, 1000.0));
+        products.add(new Product("Desktop", "DP001", 5, 800.0));
+
+        // Act
+        Shop shop = new Shop("My Shop", "12345678", user, products);
+
+        // Assert
+        assertEquals("My Shop", shop.getName());
+        assertEquals("12345678", shop.getTaxId());
+        assertNotNull(shop.getUser());
+        assertEquals("John", shop.getUser().getFirstName());
+        assertEquals("Doe", shop.getUser().getLastName());
+        assertEquals("12345678", shop.getUser().getDni());
+        assertNotNull(shop.getProducts());
+        assertEquals(2, shop.getProducts().size());
+        assertEquals("Laptop", shop.getProducts().get(0).getName());
+        assertEquals("Desktop", shop.getProducts().get(1).getName());
+    }
+
+    @Test
+    void testConstructorWithIdUserAndProducts() {
+        // Arrange
+        User user = new User("John", "Doe", "12345678");
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Laptop", "LP001", 10, 1000.0));
+        products.add(new Product("Desktop", "DP001", 5, 800.0));
+
+        // Act
+        Shop shop = new Shop(1, "My Shop", "12345678", user, products);
+
+        // Assert
+        assertEquals(1, shop.getId());
+        assertEquals("My Shop", shop.getName());
+        assertEquals("12345678", shop.getTaxId());
+        assertNotNull(shop.getUser());
+        assertEquals("John", shop.getUser().getFirstName());
+        assertEquals("Doe", shop.getUser().getLastName());
+        assertEquals("12345678", shop.getUser().getDni());
+        assertNotNull(shop.getProducts());
+        assertEquals(2, shop.getProducts().size());
+        assertEquals("Laptop", shop.getProducts().get(0).getName());
+        assertEquals("Desktop", shop.getProducts().get(1).getName());
     }
 }

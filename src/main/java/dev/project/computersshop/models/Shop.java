@@ -1,12 +1,17 @@
 package dev.project.computersshop.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +29,9 @@ public class Shop {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToMany(mappedBy = "shops")
+    public List<Product> products;
+
     public Shop( String name, String taxId) {
         this.name = name;
         this.taxId = taxId;
@@ -35,17 +43,19 @@ public class Shop {
         this.taxId = taxId;
     }
 
-    public Shop(int id, String name, String taxId, User user) {
+    public Shop(int id, String name, String taxId, User user, List<Product> products) {
         this.id = id;
         this.name = name;
         this.taxId = taxId;
         this.user = user;
+        this.products = products;
     }
 
-    public Shop( String name, String taxId, User user) {
+    public Shop( String name, String taxId, User user, List<Product> products) {
         this.name = name;
         this.taxId = taxId;
         this.user = user;
+        this.products = products;
     }
 
     public int getId() {
@@ -73,5 +83,13 @@ public class Shop {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

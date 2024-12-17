@@ -24,8 +24,7 @@ public class User {
     String lastName;
     String dni;
 
-
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Shop> shops;
 
     public User( String firstName, String lastName, String dni) {
