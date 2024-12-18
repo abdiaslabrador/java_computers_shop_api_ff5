@@ -19,7 +19,7 @@ public class ShopTest {
         // Arrange
         Shop shop2 = new Shop();
         bills = List.of(new Bill(1, LocalDateTime.now(), 100.0, 100.0, 100.0, 0, null, null, null));
-        shop = new Shop(1, "Fnac", "1234W56", bills);
+        shop = new Shop(1, "Fnac", "Abdias Labrador","1234W56", bills);
     }
 
     @Test

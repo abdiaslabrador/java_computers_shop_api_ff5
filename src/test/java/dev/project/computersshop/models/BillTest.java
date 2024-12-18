@@ -20,7 +20,7 @@ public class BillTest {
     void setUp() {
         // Arrange
         Bill bill2 = new Bill();
-        shop = new Shop(1, "Fnac", "1234W56", null);
+        shop = new Shop(1, "Fnac", "Abdias Labrador","1234W56", null);
         client = new Client(1, "John", "Doe", "12345678A", null);
         bill_dets = List.of(new BillDet(1, 10, 10.0, 10.0, null, null));
         bill = new Bill(1, LocalDateTime.now(), 100.0, 100.0, 100.0, 0, shop, client, bill_dets);
@@ -140,7 +140,7 @@ public class BillTest {
     @Test
     void testSetShop() {
         // Arrange
-        Shop newShop = new Shop(2, "MediaMarkt", "5678X90", null);
+        Shop newShop = new Shop(2, "MediaMarkt", "Abdias Labrador","5678X90", null);
 
         // Act
         bill.setShop(newShop);

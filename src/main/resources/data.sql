@@ -13,8 +13,8 @@ INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VAL
 INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Windows', '32GB', 'i9', 'Linux', 5);
 
 -- Insertar en la tabla Shop
-INSERT INTO Shops (id, name, tax_id) VALUES (default, 'Fnac', 123456);
-INSERT INTO Shops (id, name, tax_id) VALUES (default, 'MediaMark', 654321);
+INSERT INTO Shops (id, name, owner_name, tax_id) VALUES (default, 'Fnac', 'Abdias Labrador', 123456);
+INSERT INTO Shops (id, name, owner_name, tax_id) VALUES (default, 'MediaMark', 'Daniel Labrador', 654321);
 
 -- Insertar en la tabla Client
 INSERT INTO Clients (id, first_name, last_name, dni) VALUES (default, 'John', 'Doe', '12345678A');

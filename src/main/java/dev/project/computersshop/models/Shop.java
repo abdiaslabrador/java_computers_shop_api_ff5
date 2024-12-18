@@ -22,6 +22,10 @@ public class Shop {
     private int id;
     @Column()
     private String name;
+    
+
+    @Column()
+    private String ownerName;
     @Column(name = "tax_id")
     private String taxId;
 
@@ -31,10 +35,11 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(int id, String name, String taxId, List<Bill> bills) {
+    public Shop(int id, String name, String ownerName , String taxId, List<Bill> bills) {
         this.id = id;
         this.name = name;
         this.taxId = taxId;
+        this.ownerName = ownerName;
         this.bills = bills;
     }
 
@@ -55,6 +60,14 @@ public class Shop {
     }
     public void setTaxId(String taxId) {
         this.taxId = taxId;
+    }
+
+    public String getownerName() {
+        return ownerName;
+    }
+
+    public void setownerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public List<Bill> getBills() {
