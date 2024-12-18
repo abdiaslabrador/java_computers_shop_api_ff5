@@ -125,11 +125,4 @@ public class Product {
     public void setComputer(Computer computer) {
         this.computer = computer;
     }
-
-    @Override
-    public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", code=" + code + ", quantity=" + quantity + ", price=" + price
-                + ", bill_dets=" + bill_dets + ", computer=" + computer + "]";
-    }
-    
 }

@@ -46,15 +46,22 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
     }
 
     @Override
-    public ComputerDtoResponse getById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
-    }
-
-    @Override
     public void deleteById(int id) {
         Computer computer = computerRepository.findById(id).orElseThrow(()-> new ComputerNotFoundException("Computer not found by id"));
         productRepository.delete(computer.getProduct());
     }
 
+    public List<ComputerDtoResponse> searchComputerByBrand(String brand) {
+        List<ComputerDtoResponse> computers = new ArrayList<>();
+        for (Computer computer : computerRepository.findByBrandIgnoreCase(brand)) {
+            computers.add(new ComputerDtoResponse(computer));
+        }
+       return computers;
+    }
+
+    @Override
+    public ComputerDtoResponse getById(int id) {
+         Computer computer = computerRepository.findById(id).orElseThrow(()-> new ComputerNotFoundException("Computer not found by id"));
+         return new  ComputerDtoResponse(computer);
+    }
 }

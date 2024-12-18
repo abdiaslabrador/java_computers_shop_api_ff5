@@ -6,7 +6,7 @@ INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Ordenad
 INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Server', 'P005', 30, 499.99);
 
 -- Insertar en la tabla Computer
-INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Nvidia', '16GB', 'i7', 'Windows', 1);
+INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Asus', '16GB', 'i7', 'Windows', 1);
 INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Asus', '32GB', 'i9', 'Linux', 2);
 INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Intel', '8GB', 'i5', 'Windows', 3);
 INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'HP', '16GB', 'i7', 'macOS', 4);

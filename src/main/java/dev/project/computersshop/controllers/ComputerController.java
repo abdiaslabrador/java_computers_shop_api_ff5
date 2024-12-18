@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.project.computersshop.dtos.ComputerBrandDto;
 import dev.project.computersshop.dtos.ComputerDto;
 import dev.project.computersshop.dtos.ComputerDtoResponse;
 import dev.project.computersshop.msg.Msg;
@@ -41,6 +42,21 @@ public class ComputerController {
         }
         ComputerDtoResponse computerResponse = computerService.save(computer);
         return ResponseEntity.status(HttpStatus.CREATED).body(computerResponse);
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<ComputerDtoResponse>> searchComputerByBrand(@RequestBody ComputerBrandDto computer){
+        if(computer == null){return ResponseEntity.badRequest().body(null);}
+        
+        List<ComputerDtoResponse> computerResponse = computerService.searchComputerByBrand(computer.brand());
+        return ResponseEntity.status(HttpStatus.OK).body(computerResponse);
+    }
+
+    // Get a computer
+    @GetMapping("/{id}")
+    public ResponseEntity<ComputerDtoResponse> getComputer(@PathVariable int id){
+         ComputerDtoResponse computer = computerService.getById(id);
+         return ResponseEntity.status(HttpStatus.OK).body(computer);
     }
 
     // Delete a computer
