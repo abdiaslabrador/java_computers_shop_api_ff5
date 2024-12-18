@@ -1,6 +1,5 @@
 package dev.project.computersshop.dtos;
 
-import dev.project.computersshop.models.Computer;
 
 public class ComputerDto {
     private String brand ;
@@ -9,13 +8,13 @@ public class ComputerDto {
     private String operatingSystem ;
     private ProductDto product;
 
-    // public ComputerDto(Computer computer) {
-    //     this.brand = computer.getBrand();
-    //     this.memory = computer.getMemory();
-    //     this.cpu = computer.getCpu();
-    //     this.operatingSystem = computer.getOperatingSystem();
-    //     this.product = new ProductDto(computer.getProduct());
-    // }
+    public ComputerDto(String brand ,String memory ,String cpu ,String operatingSystem ,ProductDto product ) {
+        this.brand = brand;
+        this.memory = memory;
+        this.cpu = cpu;
+        this.operatingSystem = operatingSystem;
+        this.product = product;
+    }
 
     public String getBrand() {
         return brand;

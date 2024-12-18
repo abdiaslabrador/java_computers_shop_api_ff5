@@ -39,36 +39,17 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String code, int quantity, double price) {
-        this.name = name;
-        this.code = code;
-        this.quantity = quantity;
-        this.price = price;
-    }
+    
 
-    public Product(int id, String name, String code, int quantity, double price) {
-        this.id = id;
-        this.name = name;
-        this.code = code;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    public Product(int id, String name, String code, int quantity, double price, List<BillDet> bill_dets) {
+    public Product(int id, String name, String code, int quantity, double price, List<BillDet> bill_dets,
+            Computer computer) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.quantity = quantity;
         this.price = price;
         this.bill_dets = bill_dets;
-    }
-
-    public Product(String name, String code, int quantity, double price, List<BillDet> bill_dets) {
-        this.name = name;
-        this.code = code;
-        this.quantity = quantity;
-        this.price = price;
-        this.bill_dets = bill_dets;
+        this.computer = computer;
     }
 
     public int getId() {
@@ -110,6 +91,7 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+    
     public List<BillDet> getBill_dets() {
         return bill_dets;
     }

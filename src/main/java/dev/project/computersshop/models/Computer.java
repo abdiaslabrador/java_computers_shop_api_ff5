@@ -36,33 +36,9 @@ public class Computer {
 
     public Computer() {
     }
-
-    public Computer(int id,  String brand, String memory, String cpu, String operatingSystem) {
-        this.id = id;
-        this.brand = brand;
-        this.memory = memory;
-        this.cpu = cpu;
-        this.operatingSystem = operatingSystem;
-    }
-
-    public Computer(String brand, String memory, String cpu, String operatingSystem) {
-        this.brand = brand;
-        this.memory = memory;
-        this.cpu = cpu;
-        this.operatingSystem = operatingSystem;
-    }
-
     
     public Computer(int id, String brand, String memory, String cpu, String operatingSystem, Product product) {
         this.id = id;
-        this.brand = brand;
-        this.memory = memory;
-        this.cpu = cpu;
-        this.operatingSystem = operatingSystem;
-        this.product = product;
-    }
-
-    public Computer(String brand, String memory, String cpu, String operatingSystem, Product product) {
         this.brand = brand;
         this.memory = memory;
         this.cpu = cpu;

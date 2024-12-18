@@ -2,7 +2,6 @@ package dev.project.computersshop.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -37,8 +36,16 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
 
     @Override
     public ComputerDtoResponse save(ComputerDto computerDto) {
-        Computer computer = new Computer(computerDto.getBrand(), computerDto.getMemory(), computerDto.getCpu(), computerDto.getOperatingSystem());
-        Product product = new Product(computerDto.getProduct().getName(), computerDto.getProduct().getCode(), computerDto.getProduct().getQuantity(), computerDto.getProduct().getPrice());
+        Computer computer = new Computer();
+        computer.setBrand(computerDto.getBrand());
+        computer.setMemory(computerDto.getMemory());
+        computer.setCpu(computerDto.getCpu());
+        computer.setOperatingSystem(computerDto.getOperatingSystem());
+        Product product = new Product();
+        product.setName(computerDto.getProduct().getName());
+        product.setCode(computerDto.getProduct().getCode());
+        product.setQuantity(computerDto.getProduct().getQuantity());
+        product.setPrice(computerDto.getProduct().getPrice());
         product = productRepository.save(product);
         computer.setProduct(product);
         computer = computerRepository.save(computer);

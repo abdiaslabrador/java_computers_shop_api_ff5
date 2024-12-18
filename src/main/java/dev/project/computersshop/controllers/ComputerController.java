@@ -1,6 +1,7 @@
 package dev.project.computersshop.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,8 @@ import java.util.List;
 public class ComputerController {
 
     private final ComputerService computerService;
-
+    
+    @Autowired
     public ComputerController(ComputerService computerService) {
         this.computerService = computerService;
     }

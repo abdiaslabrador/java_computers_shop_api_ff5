@@ -1,6 +1,5 @@
 package dev.project.computersshop.dtos;
 
-import dev.project.computersshop.models.Product;
 
 public class ProductDto {
     private  String name;
@@ -8,12 +7,13 @@ public class ProductDto {
     private int quantity; 
     private double price;
 
-    // public ProductDto(Product product) {
-    //     this.name = product.getName();
-    //     this.code = product.getCode();
-    //     this.quantity = product.getQuantity();
-    //     this.price = product.getPrice();
-    // }
+    public ProductDto(String name,String code,int quantity, double price) {
+        this.name = name;
+        this.code = code;
+        this.quantity = quantity;
+        this.price = price;
+    }
+    
 
     public String getName() {
         return name;

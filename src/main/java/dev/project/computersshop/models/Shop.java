@@ -31,29 +31,11 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(String name, String taxId) {
-        this.name = name;
-        this.taxId = taxId;
-    }
-
-    public Shop(int id, String name, String taxId) {
-        this.id = id;
-        this.name = name;
-        this.taxId = taxId;
-    }
-
     public Shop(int id, String name, String taxId, List<Bill> bills) {
         this.id = id;
         this.name = name;
         this.taxId = taxId;
         this.bills = bills;
-    }
-
-    public Shop( String name, String taxId, List<Bill> bills) {
-        this.name = name;
-        this.taxId = taxId;
-        this.bills = bills;
-
     }
 
     public int getId() {

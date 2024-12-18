@@ -1,187 +1,93 @@
-// package dev.project.computersshop.models;
+package dev.project.computersshop.models;
 
-// import org.junit.jupiter.api.Test;
-// import static org.junit.jupiter.api.Assertions.assertEquals;
-// import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-// import java.util.ArrayList;
-// import java.util.List;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-// public class ShopTest {
+public class ShopTest {
 
-//     @Test
-//     void testGetId() {
-//         // Arrange
-//         Shop shop = new Shop(1, "My Shop", "12345678");
+    List<Bill> bills;
+    Shop shop;
 
-//         // Act and Assert
-//         assertEquals(1, shop.getId());
-//     }
+    @BeforeEach
+    void setUp() {
+        // Arrange
+        Shop shop2 = new Shop();
+        bills = List.of(new Bill(1, LocalDateTime.now(), 100.0, 100.0, 100.0, 0, null, null, null));
+        shop = new Shop(1, "Fnac", "1234W56", bills);
+    }
 
-//     @Test
-//     void testGetName() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
+    @Test
+    void testGetId() {
+        // Act and Assert
+        assertEquals(1, shop.getId());
+    }
 
-//         // Act and Assert
-//         assertNotNull(shop.getName());
-//         assertEquals("My Shop", shop.getName());
-//     }
+    @Test
+    void testGetName() {
+        // Act and Assert
+        assertNotNull(shop.getName());
+        assertEquals("Fnac", shop.getName());
+    }
 
-//     @Test
-//     void testGetTaxId() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
+    @Test
+    void testGetTaxId() {
+        // Act and Assert
+        assertNotNull(shop.getTaxId());
+        assertEquals("1234W56", shop.getTaxId());
+    }
 
-//         // Act and Assert
-//         assertNotNull(shop.getTaxId());
-//         assertEquals("12345678", shop.getTaxId());
-//     }
+    @Test
+    void testGetBills() {
+        // Act and Assert
+        assertNotNull(shop.getBills());
+        assertEquals(1, shop.getBills().size());
+    }
 
-//     @Test
-//     void testSetId() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
+    @Test
+    void testSetId() {
+        // Act
+        shop.setId(2);
 
-//         // Act
-//         shop.setId(1);
+        // Assert
+        assertEquals(2, shop.getId());
+    }
 
-//         // Assert
-//         assertEquals(1, shop.getId());
-//     }
+    @Test
+    void testSetName() {
+        // Act
+        shop.setName("MediaMarkt");
 
-//     @Test
-//     void testSetName() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
+        // Assert
+        assertEquals("MediaMarkt", shop.getName());
+    }
 
-//         // Act
-//         shop.setName("New Shop Name");
+    @Test
+    void testSetTaxId() {
+        // Act
+        shop.setTaxId("5678X90");
 
-//         // Assert
-//         assertEquals("New Shop Name", shop.getName());
-//     }
+        // Assert
+        assertEquals("5678X90", shop.getTaxId());
+    }
 
-//     @Test
-//     void testSetTaxId() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
+    @Test
+    void testSetBills() {
+        // Arrange
+        List<Bill> newBills = new ArrayList<>();
+        newBills.add(new Bill(2, LocalDateTime.now(), 200.0, 200.0, 200.0, 0, null, null, null));
 
-//         // Act
-//         shop.setTaxId("98765432");
+        // Act
+        shop.setBills(newBills);
 
-//         // Assert
-//         assertEquals("98765432", shop.getTaxId());
-//     }
-
-//     @Test
-//     void testGetUser() {
-//         // Arrange
-//         Client client = new Client("John", "Doe", "12345678");
-//         Shop shop = new Shop("My Shop", "12345678", client, new ArrayList<>());
-
-//         // Act and Assert
-//         assertNotNull(shop.getUser());
-//         assertEquals("John", shop.getUser().getFirstName());
-//         assertEquals("Doe", shop.getUser().getLastName());
-//         assertEquals("12345678", shop.getUser().getDni());
-//     }
-
-//     @Test
-//     void testSetUser() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
-//         Client client = new Client("John", "Doe", "12345678");
-
-//         // Act
-//         shop.setUser(client);
-
-//         // Assert
-//         assertNotNull(shop.getUser());
-//         assertEquals("John", shop.getUser().getFirstName());
-//         assertEquals("Doe", shop.getUser().getLastName());
-//         assertEquals("12345678", shop.getUser().getDni());
-//     }
-
-//     @Test
-//     void testGetProducts() {
-//         // Arrange
-//         List<Product> products = new ArrayList<>();
-//         products.add(new Product("Laptop", "LP001", 10, 1000.0));
-//         products.add(new Product("Desktop", "DP001", 5, 800.0));
-//         Shop shop = new Shop("My Shop", "12345678", new Client("John", "Doe", "12345678"), products);
-
-//         // Act and Assert
-//         assertNotNull(shop.getProducts());
-//         assertEquals(2, shop.getProducts().size());
-//         assertEquals("Laptop", shop.getProducts().get(0).getName());
-//         assertEquals("Desktop", shop.getProducts().get(1).getName());
-//     }
-
-//     @Test
-//     void testSetProducts() {
-//         // Arrange
-//         Shop shop = new Shop("My Shop", "12345678");
-//         List<Product> products = new ArrayList<>();
-//         products.add(new Product("Laptop", "LP001", 10, 1000.0));
-//         products.add(new Product("Desktop", "DP001", 5, 800.0));
-
-//         // Act
-//         shop.setProducts(products);
-
-//         // Assert
-//         assertNotNull(shop.getProducts());
-//         assertEquals(2, shop.getProducts().size());
-//         assertEquals("Laptop", shop.getProducts().get(0).getName());
-//         assertEquals("Desktop", shop.getProducts().get(1).getName());
-//     }
-
-//     @Test
-//     void testConstructorWithUserAndProducts() {
-//         // Arrange
-//         Client client = new Client("John", "Doe", "12345678");
-//         List<Product> products = new ArrayList<>();
-//         products.add(new Product("Laptop", "LP001", 10, 1000.0));
-//         products.add(new Product("Desktop", "DP001", 5, 800.0));
-
-//         // Act
-//         Shop shop = new Shop("My Shop", "12345678", client, products);
-
-//         // Assert
-//         assertEquals("My Shop", shop.getName());
-//         assertEquals("12345678", shop.getTaxId());
-//         assertNotNull(shop.getUser());
-//         assertEquals("John", shop.getUser().getFirstName());
-//         assertEquals("Doe", shop.getUser().getLastName());
-//         assertEquals("12345678", shop.getUser().getDni());
-//         assertNotNull(shop.getProducts());
-//         assertEquals(2, shop.getProducts().size());
-//         assertEquals("Laptop", shop.getProducts().get(0).getName());
-//         assertEquals("Desktop", shop.getProducts().get(1).getName());
-//     }
-
-//     @Test
-//     void testConstructorWithIdUserAndProducts() {
-//         // Arrange
-//         Client client = new Client("John", "Doe", "12345678");
-//         List<Product> products = new ArrayList<>();
-//         products.add(new Product("Laptop", "LP001", 10, 1000.0));
-//         products.add(new Product("Desktop", "DP001", 5, 800.0));
-
-//         // Act
-//         Shop shop = new Shop(1, "My Shop", "12345678", client, products);
-
-//         // Assert
-//         assertEquals(1, shop.getId());
-//         assertEquals("My Shop", shop.getName());
-//         assertEquals("12345678", shop.getTaxId());
-//         assertNotNull(shop.getUser());
-//         assertEquals("John", shop.getUser().getFirstName());
-//         assertEquals("Doe", shop.getUser().getLastName());
-//         assertEquals("12345678", shop.getUser().getDni());
-//         assertNotNull(shop.getProducts());
-//         assertEquals(2, shop.getProducts().size());
-//         assertEquals("Laptop", shop.getProducts().get(0).getName());
-//         assertEquals("Desktop", shop.getProducts().get(1).getName());
-//     }
-// }
+        // Assert
+        assertNotNull(shop.getBills());
+        assertEquals(1, shop.getBills().size());
+        assertEquals(2, shop.getBills().get(0).getId());
+    }
+}

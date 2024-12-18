@@ -9,22 +9,19 @@ import org.junit.jupiter.api.BeforeEach;
 public class ComputerTest {
 
     Computer computer;
-    Computer computerId;
     Product product;
 
     @BeforeEach
     void setUp() {
         // Arrange
-        computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
-        product = new Product("Laptop", "LP001", 10, 1000.0);
-        computerId = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
+        Computer computer2 = new Computer();
+        product = new Product(1, "Laptop", "LP001", 10, 1000.0, null, null);
+        computer = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
     }
 
 
     @Test
     void testGetBrand() {
-        // Arrange
-        // computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10");
         // Act and Assert
         assertNotNull(computer.getBrand());
         assertEquals("Dell", computer.getBrand());
@@ -40,7 +37,7 @@ public class ComputerTest {
     @Test
     void testGetId() {
         // Act and Assert
-        assertEquals(1, computerId.getId());
+        assertEquals(1, computer.getId());
     }
 
     @Test
@@ -59,9 +56,6 @@ public class ComputerTest {
 
     @Test
     void testGetProduct() {
-        // Arrange
-        Computer computer = new Computer("Dell", "16GB", "Intel Core i7", "Windows 10", product);
-
         // Act and Assert
         assertNotNull(computer.getProduct());
         assertEquals("Laptop", computer.getProduct().getName());
@@ -69,14 +63,11 @@ public class ComputerTest {
 
     @Test
     void testSetBrand() {
-        // Arrange
-        Computer computerIdPro = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
-
         // Act
-        computerIdPro.setBrand("HP");
+        computer.setBrand("HP");
 
         // Assert
-        assertEquals("HP", computerIdPro.getBrand());
+        assertEquals("HP", computer.getBrand());
     }
 
     @Test
@@ -99,8 +90,6 @@ public class ComputerTest {
 
     @Test
     void testSetMemory() {
-        // Arrange
-
         // Act
         computer.setMemory("32GB");
 
@@ -110,8 +99,6 @@ public class ComputerTest {
 
     @Test
     void testSetOperatingSystem() {
-        // Arrange
-
         // Act
         computer.setOperatingSystem("Linux");
 
@@ -121,8 +108,6 @@ public class ComputerTest {
 
     @Test
     void testSetProduct() {
-        // Arrange
-
         // Act
         computer.setProduct(product);
 

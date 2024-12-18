@@ -33,4 +33,67 @@ public class BillDet {
     @ManyToOne()
     @JoinColumn(name = "bill_id")
     private Bill bill;
+    
+    public BillDet(){
+
+    }
+
+    public BillDet(int id, int quantity, double salePrice, double subTotal, Product product, Bill bill) {
+        this.id = id;
+        this.quantity = quantity;
+        this.salePrice = salePrice;
+        this.subTotal = subTotal;
+        this.product = product;
+        this.bill = bill;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Bill getBill() {
+        return bill;
+    }
+
+    public void setBill(Bill bill) {
+        this.bill = bill;
+    }
+
+    
 }

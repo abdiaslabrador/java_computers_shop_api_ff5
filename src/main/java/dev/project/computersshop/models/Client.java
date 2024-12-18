@@ -31,19 +31,6 @@ public class Client {
     public Client() {
     }
 
-    public Client( String firstName, String lastName, String dni) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dni = dni;
-    }
-
-    public Client(int id, String firstName, String lastName, String dni) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dni = dni;
-    }
-
     public Client(int id, String firstName, String lastName, String dni, List<Bill> bills) {
         this.id = id;
         this.firstName = firstName;
@@ -52,13 +39,6 @@ public class Client {
         this.bills = bills;
     }
 
-    public Client( String firstName, String lastName, String dni, List<Bill> bills) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dni = dni;
-        this.bills = bills;
-    }
-    
     public int getId() {
         return id;
     }
