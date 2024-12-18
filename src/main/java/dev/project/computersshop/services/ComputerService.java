@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dev.project.computersshop.dtos.ComputerDto;
 import dev.project.computersshop.dtos.ComputerDtoResponse;
+import dev.project.computersshop.exceptions.computer.ComputerNotFoundException;
 import dev.project.computersshop.interfaces.IGenericService;
 import dev.project.computersshop.models.Computer;
 import dev.project.computersshop.repositories.ComputerRepository;
@@ -47,8 +48,8 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
 
     @Override
     public void deleteById(int id) {
-        Computer computer = computerRepository.findById(id).get();
-        productRepository.deleteById(computer.getProduct().getId());
+        Computer computer = computerRepository.findById(id).orElseThrow(()-> new ComputerNotFoundException("Computer not found by id"));
+        productRepository.delete(computer.getProduct());
     }
 
 }
