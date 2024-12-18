@@ -11,6 +11,7 @@ import dev.project.computersshop.dtos.ComputerDtoResponse;
 import dev.project.computersshop.exceptions.computer.ComputerNotFoundException;
 import dev.project.computersshop.interfaces.IGenericService;
 import dev.project.computersshop.models.Computer;
+import dev.project.computersshop.models.Product;
 import dev.project.computersshop.repositories.ComputerRepository;
 import dev.project.computersshop.repositories.ProductRepository;
 
@@ -35,9 +36,13 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
     }
 
     @Override
-    public ComputerDtoResponse save(ComputerDto dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    public ComputerDtoResponse save(ComputerDto computerDto) {
+        Computer computer = new Computer(computerDto.getBrand(), computerDto.getMemory(), computerDto.getCpu(), computerDto.getOperatingSystem());
+        Product product = new Product(computerDto.getProduct().getName(), computerDto.getProduct().getCode(), computerDto.getProduct().getQuantity(), computerDto.getProduct().getPrice());
+        product = productRepository.save(product);
+        computer.setProduct(product);
+        computer = computerRepository.save(computer);
+        return new ComputerDtoResponse(computer);
     }
 
     @Override

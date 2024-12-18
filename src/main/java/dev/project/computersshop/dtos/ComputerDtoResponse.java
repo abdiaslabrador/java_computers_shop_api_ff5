@@ -9,7 +9,7 @@ public class ComputerDtoResponse {
     private String memory ;
     private String cpu ;
     private String operatingSystem ;
-    private ProductDto product;
+    private ProductDtoResponse product;
 
     public ComputerDtoResponse(Computer computer){
         this.id = computer.getId();
@@ -17,7 +17,7 @@ public class ComputerDtoResponse {
         this.memory = computer.getMemory();
         this.cpu = computer.getCpu();
         this.operatingSystem = computer.getOperatingSystem();
-        this.product = new ProductDto(computer.getProduct());
+        this.product = new ProductDtoResponse(computer.getProduct());
         
     }
 
@@ -41,7 +41,7 @@ public class ComputerDtoResponse {
         return operatingSystem;
     }
 
-    public ProductDto getProduct() {
+    public ProductDtoResponse getProduct() {
         return product;
     }
     

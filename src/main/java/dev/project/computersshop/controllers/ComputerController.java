@@ -35,8 +35,12 @@ public class ComputerController {
     }
 
     @PostMapping("")
-    public ComputerDtoResponse createComputer(@RequestBody ComputerDto entity){
-        return null;
+    public ResponseEntity<ComputerDtoResponse>  createComputer(@RequestBody ComputerDto computer){
+        if(isInvalidComputer(computer)){
+            return ResponseEntity.badRequest().body(null);
+        }
+        ComputerDtoResponse computerResponse = computerService.save(computer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(computerResponse);
     }
 
     // Delete a computer
@@ -46,4 +50,11 @@ public class ComputerController {
          return ResponseEntity.status(HttpStatus.OK).body(new Msg(HttpStatus.OK, "Deleted successfully"));
     }
 
+    private boolean isInvalidComputer(ComputerDto computer) {
+        return computer.getBrand() == null || 
+               computer.getMemory() == null || 
+               computer.getCpu() == null || 
+               computer.getOperatingSystem() == null ||
+               computer.getProduct() == null;
+    }
 }

@@ -117,4 +117,11 @@ public class Computer {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "Computer [id=" + id + ", brand=" + brand + ", memory=" + memory + ", cpu=" + cpu + ", operatingSystem="
+                + operatingSystem + ", product=" + product + "]";
+    }
+    
 }

@@ -117,4 +117,19 @@ public class Product {
     public void setBill_dets(List<BillDet> bill_dets) {
         this.bill_dets = bill_dets;
     }
+
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public void setComputer(Computer computer) {
+        this.computer = computer;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", code=" + code + ", quantity=" + quantity + ", price=" + price
+                + ", bill_dets=" + bill_dets + ", computer=" + computer + "]";
+    }
+    
 }

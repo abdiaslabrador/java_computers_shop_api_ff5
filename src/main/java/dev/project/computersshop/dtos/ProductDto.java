@@ -3,23 +3,17 @@ package dev.project.computersshop.dtos;
 import dev.project.computersshop.models.Product;
 
 public class ProductDto {
-   private  int id;
-   private  String name;
-   private  String code;
-   private int quantity; 
-   private double price;
+    private  String name;
+    private  String code;
+    private int quantity; 
+    private double price;
 
-    public ProductDto(Product product) {
-        this.id = product.getId();
-        this.name = product.getName();
-        this.code = product.getCode();
-        this.quantity = product.getQuantity();
-        this.price = product.getPrice();
-    }
-
-    public int getId() {
-        return id;
-    }
+    // public ProductDto(Product product) {
+    //     this.name = product.getName();
+    //     this.code = product.getCode();
+    //     this.quantity = product.getQuantity();
+    //     this.price = product.getPrice();
+    // }
 
     public String getName() {
         return name;
@@ -36,4 +30,6 @@ public class ProductDto {
     public double getPrice() {
         return price;
     }
+
+    
 }
