@@ -28,6 +28,9 @@ public class Shop {
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Bill> bills;
 
+    public Shop() {
+    }
+
     public Shop(String name, String taxId) {
         this.name = name;
         this.taxId = taxId;

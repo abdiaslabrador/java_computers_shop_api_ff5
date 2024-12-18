@@ -28,6 +28,9 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Bill> bills;
 
+    public Client() {
+    }
+
     public Client( String firstName, String lastName, String dni) {
         this.firstName = firstName;
         this.lastName = lastName;

@@ -1,10 +1,16 @@
 package dev.project.computersshop.controllers;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.project.computersshop.dtos.ComputerDtoResponse;
+import dev.project.computersshop.msg.Msg;
 import dev.project.computersshop.services.ComputerService;
 
 import java.util.List;
@@ -19,10 +25,17 @@ public class ComputerController {
         this.computerService = computerService;
     }
 
-    // Get all appointments
+    // Get all computers
     @GetMapping("")
     public List<ComputerDtoResponse> index(){
         return computerService.findAll();
+    }
+
+    // Delete a computer
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Msg> deleteComputer(@PathVariable int id){
+         computerService.deleteById(id);
+         return ResponseEntity.status(HttpStatus.OK).body(new Msg(HttpStatus.OK, "Deleted successfully"));
     }
 
 }

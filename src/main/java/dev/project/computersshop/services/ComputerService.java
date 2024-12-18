@@ -2,6 +2,7 @@ package dev.project.computersshop.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -10,15 +11,16 @@ import dev.project.computersshop.dtos.ComputerDtoResponse;
 import dev.project.computersshop.interfaces.IGenericService;
 import dev.project.computersshop.models.Computer;
 import dev.project.computersshop.repositories.ComputerRepository;
+import dev.project.computersshop.repositories.ProductRepository;
 
 
 @Service
 public class ComputerService implements IGenericService<ComputerDtoResponse, ComputerDto> {
-    // private final ProductRepository productRepository;
     private final ComputerRepository computerRepository;
+    private final ProductRepository productRepository;
 
-    public ComputerService(ComputerRepository computerRepository) {
-        // this.productRepository = productRepository;
+    public ComputerService(ComputerRepository computerRepository, ProductRepository productRepository) {
+        this.productRepository = productRepository;
         this.computerRepository = computerRepository;
     }
 
@@ -29,7 +31,6 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
             computers.add(new ComputerDtoResponse(computer));
         }
         return computers;
-
     }
 
     @Override
@@ -42,6 +43,12 @@ public class ComputerService implements IGenericService<ComputerDtoResponse, Com
     public ComputerDtoResponse getById(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    }
+
+    @Override
+    public void deleteById(int id) {
+        Computer computer = computerRepository.findById(id).get();
+        productRepository.deleteById(computer.getProduct().getId());
     }
 
 }

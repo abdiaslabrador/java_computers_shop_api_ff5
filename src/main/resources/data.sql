@@ -14,15 +14,15 @@ INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VAL
 
 -- Insertar en la tabla Shop
 INSERT INTO Shops (id, name, tax_id) VALUES (1, 'Fnac', 123456);
-INSERT INTO Shops (id, name, tax_id) VALUES (2, 'Shop2', 654321);
+INSERT INTO Shops (id, name, tax_id) VALUES (2, 'MediaMark', 654321);
 
 -- Insertar en la tabla Client
 INSERT INTO Clients (id, first_name, last_name, dni) VALUES (1, 'John', 'Doe', '12345678A');
 INSERT INTO Clients (id, first_name, last_name, dni) VALUES (2, 'Jane', 'Smith', '87654321B');
 
 -- Insertar en la tabla Bill
-INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (1, '2023-10-01', 100.00, 110.00, 10.00, 110.00, 1, 1);
-INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (2, '2023-10-02', 200.00, 220.00, 20.00, 220.00, 2, 2);
+INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (1, '2023-10-01', 100.00, 110.00, 10.00, 100.00, 1, 1);
+INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (2, '2023-10-02', 200.00, 220.00, 20.00, 200.00, 2, 2);
 
 -- Insertar en la tabla Bill_det
 INSERT INTO Bill_dets (id, quantity, sale_price, sub_total, product_id, bill_id) VALUES (1, 2, 50.00, 100.00, 1, 1);
