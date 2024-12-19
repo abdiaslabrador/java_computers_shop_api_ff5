@@ -12,7 +12,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,15 +25,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import dev.project.computersshop.dtos.ComputerBrandDto;
 import dev.project.computersshop.dtos.ComputerDto;
 import dev.project.computersshop.dtos.ComputerDtoResponse;
 import dev.project.computersshop.dtos.ProductDto;
 import dev.project.computersshop.models.Computer;
 import dev.project.computersshop.models.Product;
-import dev.project.computersshop.msg.Msg;
 import dev.project.computersshop.services.ComputerService;
 
 @ExtendWith(MockitoExtension.class)
