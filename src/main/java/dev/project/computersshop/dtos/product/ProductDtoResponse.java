@@ -1,13 +1,14 @@
-package dev.project.computersshop.dtos;
+package dev.project.computersshop.dtos.product;
 
 import dev.project.computersshop.models.Product;
 
 public class ProductDtoResponse {
-   private  int id;
+    private  int id;
    private  String name;
    private  String code;
    private int quantity; 
    private double price;
+   private ProductComputerResponse computer;
 
     public ProductDtoResponse(Product product) {
         this.id = product.getId();
@@ -15,11 +16,13 @@ public class ProductDtoResponse {
         this.code = product.getCode();
         this.quantity = product.getQuantity();
         this.price = product.getPrice();
+        this.computer = new ProductComputerResponse(product.getComputer());
     }
-
-    public int getId() {
+    
+    public int getId(){
         return id;
     }
+
 
     public String getName() {
         return name;
@@ -36,4 +39,8 @@ public class ProductDtoResponse {
     public double getPrice() {
         return price;
     }
+
+    public ProductComputerResponse getComputer() {
+        return computer;
+    }    
 }

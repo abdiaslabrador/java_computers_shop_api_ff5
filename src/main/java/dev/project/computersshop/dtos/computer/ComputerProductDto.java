@@ -1,13 +1,13 @@
-package dev.project.computersshop.dtos;
+package dev.project.computersshop.dtos.computer;
 
 
-public class ProductDto {
+public class ComputerProductDto {
     private  String name;
     private  String code;
     private int quantity; 
     private double price;
 
-    public ProductDto(String name,String code,int quantity, double price) {
+    public ComputerProductDto(String name,String code,int quantity, double price) {
         this.name = name;
         this.code = code;
         this.quantity = quantity;

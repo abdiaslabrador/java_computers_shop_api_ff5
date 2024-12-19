@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.project.computersshop.dtos.ComputerBrandDto;
-import dev.project.computersshop.dtos.ComputerDto;
-import dev.project.computersshop.dtos.ComputerDtoResponse;
+import dev.project.computersshop.dtos.computer.ComputerDto;
+import dev.project.computersshop.dtos.computer.ComputerDtoResponse;
 import dev.project.computersshop.msg.Msg;
 import dev.project.computersshop.services.ComputerService;
 

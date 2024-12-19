@@ -1,4 +1,4 @@
-package dev.project.computersshop.dtos;
+package dev.project.computersshop.dtos.computer;
 
 import dev.project.computersshop.models.Computer;
 
@@ -9,7 +9,7 @@ public class ComputerDtoResponse {
     private String memory ;
     private String cpu ;
     private String operatingSystem ;
-    private ProductDtoResponse product;
+    private ComputerProductDtoResponse product;
 
     public ComputerDtoResponse(Computer computer){
         this.id = computer.getId();
@@ -17,7 +17,7 @@ public class ComputerDtoResponse {
         this.memory = computer.getMemory();
         this.cpu = computer.getCpu();
         this.operatingSystem = computer.getOperatingSystem();
-        this.product = new ProductDtoResponse(computer.getProduct());
+        this.product = new ComputerProductDtoResponse(computer.getProduct());
         
     }
 
@@ -41,7 +41,7 @@ public class ComputerDtoResponse {
         return operatingSystem;
     }
 
-    public ProductDtoResponse getProduct() {
+    public ComputerProductDtoResponse getProduct() {
         return product;
     }
     

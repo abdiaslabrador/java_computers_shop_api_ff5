@@ -1,4 +1,4 @@
-package dev.project.computersshop.dtos;
+package dev.project.computersshop.dtos.computer;
 
 
 public class ComputerDto {
@@ -6,9 +6,9 @@ public class ComputerDto {
     private String memory ;
     private String cpu ;
     private String operatingSystem ;
-    private ProductDto product;
+    private ComputerProductDto product;
 
-    public ComputerDto(String brand ,String memory ,String cpu ,String operatingSystem ,ProductDto product ) {
+    public ComputerDto(String brand ,String memory ,String cpu ,String operatingSystem ,ComputerProductDto product ) {
         this.brand = brand;
         this.memory = memory;
         this.cpu = cpu;
@@ -32,7 +32,7 @@ public class ComputerDto {
         return operatingSystem;
     }
 
-    public ProductDto getProduct() {
+    public ComputerProductDto getProduct() {
         return product;
     }
 

@@ -26,9 +26,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.project.computersshop.dtos.ComputerBrandDto;
-import dev.project.computersshop.dtos.ComputerDto;
-import dev.project.computersshop.dtos.ComputerDtoResponse;
-import dev.project.computersshop.dtos.ProductDto;
+import dev.project.computersshop.dtos.computer.ComputerDto;
+import dev.project.computersshop.dtos.computer.ComputerDtoResponse;
+import dev.project.computersshop.dtos.computer.ComputerProductDto;
 import dev.project.computersshop.models.Computer;
 import dev.project.computersshop.models.Product;
 import dev.project.computersshop.services.ComputerService;
@@ -46,14 +46,14 @@ public class ComputerControllerTest {
     private MockMvc mockMvc;
     private Product product;
     private ComputerDto computerDto;
-    private ProductDto productDto;
+    private ComputerProductDto productDto;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(computerController).build();
         product = new Product(1, "Laptop", "LP001", 10, 1000.0, null, null);
         computer = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", product);
-        productDto = new ProductDto("Laptop", "LP001", 10, 1000.0);
+        productDto = new ComputerProductDto("Laptop", "LP001", 10, 1000.0);
         computerDto = new ComputerDto("Dell", "16GB", "Intel Core i7", "Windows 10", productDto);
         computerDtoResponse = List.of(new ComputerDtoResponse(computer));
     }

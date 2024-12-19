@@ -10,7 +10,7 @@ import java.util.List;
 public class ProductTest {
 
     Product product;
-    List<BillDet> bill_dets;
+    List<BillDet> billDets;
     Computer computer;
 
     @BeforeEach
@@ -18,8 +18,8 @@ public class ProductTest {
         // Arrange
         Product product2 = new Product();
         computer = new Computer(1, "Dell", "16GB", "Intel Core i7", "Windows 10", null);
-        bill_dets = List.of(new BillDet(1, 10, 10.0, 10.0, null, null));
-        product = new Product(1, "Laptop", "LP001", 10, 1000.0, bill_dets, computer);
+        billDets = List.of(new BillDet(1, 10, 10.0, 10.0, null, null));
+        product = new Product(1, "Laptop", "LP001", 10, 1000.0, billDets, computer);
     }
 
     @Test
@@ -101,25 +101,25 @@ public class ProductTest {
     }
 
     @Test
-    void testGetBill_dets() {
+    void testgetBillDets() {
         // Act and Assert
-        assertNotNull(product.getBill_dets());
-        assertEquals(1, product.getBill_dets().size());
+        assertNotNull(product.getBillDets());
+        assertEquals(1, product.getBillDets().size());
     }
 
     @Test
-    void testSetBill_dets() {
+    void testsetBillDets() {
         // Arrange
         List<BillDet> newBillDets = new ArrayList<>();
         newBillDets.add(new BillDet(2, 20, 20.0, 20.0, null, null));
 
         // Act
-        product.setBill_dets(newBillDets);
+        product.setBillDets(newBillDets);
 
         // Assert
-        assertNotNull(product.getBill_dets());
-        assertEquals(1, product.getBill_dets().size());
-        assertEquals(2, product.getBill_dets().get(0).getId());
+        assertNotNull(product.getBillDets());
+        assertEquals(1, product.getBillDets().size());
+        assertEquals(2, product.getBillDets().get(0).getId());
     }
 
     @Test

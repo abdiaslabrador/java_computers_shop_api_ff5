@@ -14,13 +14,13 @@ import jakarta.persistence.Table;
 public class BillDet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
     @Column()
-    int quantity; 
+    private int quantity; 
     @Column(name = "sale_price")
-    double salePrice;
+    private double salePrice;
     @Column(name = "sub_total")
-    double subTotal;
+    private double subTotal;
 
     @ManyToOne()
     @JoinColumn(name = "product_id")

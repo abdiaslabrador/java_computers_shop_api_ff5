@@ -19,8 +19,6 @@ public class Shop {
     private int id;
     @Column()
     private String name;
-    
-
     @Column()
     private String ownerName;
     @Column(name = "tax_id")
@@ -59,11 +57,11 @@ public class Shop {
         this.taxId = taxId;
     }
 
-    public String getownerName() {
+    public String getOwnerName() {
         return ownerName;
     }
 
-    public void setownerName(String ownerName) {
+    public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
 

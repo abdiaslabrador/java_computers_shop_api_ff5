@@ -19,17 +19,17 @@ import jakarta.persistence.Table;
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Primary Key
-    int id;
+    private int id;
     @Column()
-    LocalDateTime date;
+    private LocalDateTime date;
     @Column(name = "sub_total")
-    double subTotal;
+    private double subTotal;
     @Column(name = "total")
-    double total;
-    @Column(name = "total_paid")
-    double total_paid;
+    private double total;
+    @Column(name = "totalPaid")
+    private double totalPaid;
     @Column()
-    double discount;
+    private double discount;
      
     @ManyToOne()
     @JoinColumn(name = "shop_id")
@@ -40,23 +40,23 @@ public class Bill {
     private Client client;
 
     @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<BillDet> bill_dets;
+    public List<BillDet> billDets;
 
     public Bill(){
 
     }
 
-    public Bill(int id, LocalDateTime date, double subTotal, double total, double total_paid, double discount,
-            Shop shop, Client client, List<BillDet> bill_dets) {
+    public Bill(int id, LocalDateTime date, double subTotal, double total, double totalPaid, double discount,
+            Shop shop, Client client, List<BillDet> billDets) {
         this.id = id;
         this.date = date;
         this.subTotal = subTotal;
         this.total = total;
-        this.total_paid = total_paid;
+        this.totalPaid = totalPaid;
         this.discount = discount;
         this.shop = shop;
         this.client = client;
-        this.bill_dets = bill_dets;
+        this.billDets = billDets;
     }
 
     public int getId() {
@@ -91,12 +91,12 @@ public class Bill {
         this.total = total;
     }
 
-    public double getTotal_paid() {
-        return total_paid;
+    public double getTotalPaid() {
+        return totalPaid;
     }
 
-    public void setTotal_paid(double total_paid) {
-        this.total_paid = total_paid;
+    public void setTotalPaid(double totalPaid) {
+        this.totalPaid = totalPaid;
     }
 
     public double getDiscount() {
@@ -123,11 +123,11 @@ public class Bill {
         this.client = client;
     }
 
-    public List<BillDet> getBill_dets() {
-        return bill_dets;
+    public List<BillDet> getBillDets() {
+        return billDets;
     }
 
-    public void setBill_dets(List<BillDet> bill_dets) {
-        this.bill_dets = bill_dets;
+    public void setBillDets(List<BillDet> billDets) {
+        this.billDets = billDets;
     }
 }

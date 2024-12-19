@@ -28,7 +28,7 @@ public class Product {
     double price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<BillDet> bill_dets;
+    public List<BillDet> billDets;
 
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Computer computer;
@@ -38,14 +38,14 @@ public class Product {
 
     
 
-    public Product(int id, String name, String code, int quantity, double price, List<BillDet> bill_dets,
+    public Product(int id, String name, String code, int quantity, double price, List<BillDet> billDets,
             Computer computer) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.quantity = quantity;
         this.price = price;
-        this.bill_dets = bill_dets;
+        this.billDets = billDets;
         this.computer = computer;
     }
 
@@ -89,12 +89,12 @@ public class Product {
         this.price = price;
     }
     
-    public List<BillDet> getBill_dets() {
-        return bill_dets;
+    public List<BillDet> getBillDets() {
+        return billDets;
     }
 
-    public void setBill_dets(List<BillDet> bill_dets) {
-        this.bill_dets = bill_dets;
+    public void setBillDets(List<BillDet> billDets) {
+        this.billDets = billDets;
     }
 
     public Computer getComputer() {

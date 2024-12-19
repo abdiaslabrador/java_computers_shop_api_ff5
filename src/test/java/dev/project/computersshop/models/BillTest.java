@@ -13,7 +13,7 @@ public class BillTest {
 
     Shop shop;
     Client client;
-    List<BillDet> bill_dets;
+    List<BillDet> billDets;
     Bill bill;
 
     @BeforeEach
@@ -22,8 +22,8 @@ public class BillTest {
         Bill bill2 = new Bill();
         shop = new Shop(1, "Fnac", "Abdias Labrador","1234W56", null);
         client = new Client(1, "John", "Doe", "12345678A", null);
-        bill_dets = List.of(new BillDet(1, 10, 10.0, 10.0, null, null));
-        bill = new Bill(1, LocalDateTime.now(), 100.0, 100.0, 100.0, 0, shop, client, bill_dets);
+        billDets = List.of(new BillDet(1, 10, 10.0, 10.0, null, null));
+        bill = new Bill(1, LocalDateTime.now(), 100.0, 100.0, 100.0, 0, shop, client, billDets);
     }
 
     @Test
@@ -51,9 +51,9 @@ public class BillTest {
     }
 
     @Test
-    void testGetTotal_paid() {
+    void testgetTotalPaid() {
         // Act and Assert
-        assertEquals(100.0, bill.getTotal_paid(), 0.01);
+        assertEquals(100.0, bill.getTotalPaid(), 0.01);
     }
 
     @Test
@@ -77,10 +77,10 @@ public class BillTest {
     }
 
     @Test
-    void testGetBill_dets() {
+    void testgetBillDets() {
         // Act and Assert
-        assertNotNull(bill.getBill_dets());
-        assertEquals(1, bill.getBill_dets().size());
+        assertNotNull(bill.getBillDets());
+        assertEquals(1, bill.getBillDets().size());
     }
 
     @Test
@@ -120,12 +120,12 @@ public class BillTest {
     }
 
     @Test
-    void testSetTotal_paid() {
+    void testsetTotalPaid() {
         // Act
-        bill.setTotal_paid(200.0);
+        bill.setTotalPaid(200.0);
 
         // Assert
-        assertEquals(200.0, bill.getTotal_paid(), 0.01);
+        assertEquals(200.0, bill.getTotalPaid(), 0.01);
     }
 
     @Test
@@ -164,17 +164,17 @@ public class BillTest {
     }
 
     @Test
-    void testSetBill_dets() {
+    void testsetBillDets() {
         // Arrange
         List<BillDet> newBillDets = new ArrayList<>();
         newBillDets.add(new BillDet(2, 20, 20.0, 20.0, null, null));
 
         // Act
-        bill.setBill_dets(newBillDets);
+        bill.setBillDets(newBillDets);
 
         // Assert
-        assertNotNull(bill.getBill_dets());
-        assertEquals(1, bill.getBill_dets().size());
-        assertEquals(2, bill.getBill_dets().get(0).getId());
+        assertNotNull(bill.getBillDets());
+        assertEquals(1, bill.getBillDets().size());
+        assertEquals(2, bill.getBillDets().get(0).getId());
     }
 }

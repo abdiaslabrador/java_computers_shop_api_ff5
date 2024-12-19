@@ -1,9 +1,9 @@
 -- Insertar en la tabla Product
-INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Laptop', 'P001', 10, 99.99);
-INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Ordenador', 'P002', 20, 199.99);
-INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Laptop', 'P003', 15, 299.99);
-INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Ordenador', 'P004', 25, 399.99);
-INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Server', 'P005', 30, 499.99);
+INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Laptop', 'P001', 10, 50.00);
+INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Ordenador', 'P002', 20, 50.00);
+INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Laptop', 'P003', 15, 50.00);
+INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Ordenador', 'P004', 25, 50.00);
+INSERT INTO Products (id, name, code, quantity, price) VALUES (default, 'Server', 'P005', 30, 50.00);
 
 -- Insertar en la tabla Computer
 INSERT INTO Computers (id, brand, memory, cpu, operating_system, product_id) VALUES (default, 'Asus', '16GB', 'i7', 'Windows', 1);
@@ -21,11 +21,12 @@ INSERT INTO Clients (id, first_name, last_name, dni) VALUES (default, 'John', 'D
 INSERT INTO Clients (id, first_name, last_name, dni) VALUES (default, 'Jane', 'Smith', '87654321B');
 
 -- Insertar en la tabla Bill
-INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (default, '2023-10-01', 100.00, 110.00, 10.00, 100.00, 1, 1);
+INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (default, '2023-10-01', 200.00, 200.00, 10.00, 190.00, 1, 1);
 INSERT INTO Bills (id, date, sub_total, total, discount, total_paid, client_id, shop_id) VALUES (default, '2023-10-02', 200.00, 220.00, 20.00, 200.00, 2, 2);
 
 -- Insertar en la tabla Bill_det
 INSERT INTO Bill_dets (id, quantity, sale_price, sub_total, product_id, bill_id) VALUES (default, 2, 50.00, 100.00, 1, 1);
+INSERT INTO Bill_dets (id, quantity, sale_price, sub_total, product_id, bill_id) VALUES (default, 2, 50.00, 100.00, 2, 1);
 INSERT INTO Bill_dets (id, quantity, sale_price, sub_total, product_id, bill_id) VALUES (default, 1, 200.00, 200.00, 2, 2);
 
 

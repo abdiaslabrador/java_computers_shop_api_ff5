@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import dev.project.computersshop.dtos.ComputerDto;
-import dev.project.computersshop.dtos.ComputerDtoResponse;
+import dev.project.computersshop.dtos.computer.ComputerDto;
+import dev.project.computersshop.dtos.computer.ComputerDtoResponse;
 import dev.project.computersshop.exceptions.computer.ComputerNotFoundException;
 import dev.project.computersshop.interfaces.IGenericService;
 import dev.project.computersshop.models.Computer;
